@@ -591,19 +591,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return window.innerWidth < 768;
     }
 
-    // 优化移动端滚动性能
-    let ticking = false;
-    function optimizedScrollHandler() {
-        if (!ticking) {
-            requestAnimationFrame(function() {
-                // 这里可以添加需要在滚动时执行的优化代码
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }
+    // // 优化移动端滚动性能
+    // let ticking = false;
+    // function optimizedScrollHandler() {
+    //     if (!ticking) {
+    //         requestAnimationFrame(function() {
+    //             // 这里可以添加需要在滚动时执行的优化代码
+    //             ticking = false;
+    //         });
+    //         ticking = true;
+    //     }
+    // }
 
-    window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+    // window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
     // // 触摸设备优化
     // if ('ontouchstart' in window) {
