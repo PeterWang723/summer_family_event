@@ -619,7 +619,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // 否则（背景层）阻止滚动
-            e.preventDefault();
+            if (e.target.closest('.fixed')) {
+                e.preventDefault();
+            }
         }, { passive: false });
     }
 
