@@ -605,25 +605,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
-    // 触摸设备优化
-    if ('ontouchstart' in window) {
-        // 为触摸设备添加特殊处理
-        document.body.classList.add('touch-device');
+    // // 触摸设备优化
+    // if ('ontouchstart' in window) {
+    //     // 为触摸设备添加特殊处理
+    //     document.body.classList.add('touch-device');
         
-        document.addEventListener('touchmove', function(e) {
-            const overlay = document.querySelector('#game-details-overlay');
+    //     document.addEventListener('touchmove', function(e) {
+    //         const overlay = document.querySelector('#game-details-overlay');
 
-            // 如果 overlay 是开启状态，并且用户正在触摸 overlay 内部 => 允许滚动
-            if (overlay && overlay.contains(e.target)) {
-                return; // ✅ 不阻止滚动
-            }
+    //         // 如果 overlay 是开启状态，并且用户正在触摸 overlay 内部 => 允许滚动
+    //         if (overlay && overlay.contains(e.target)) {
+    //             return; // ✅ 不阻止滚动
+    //         }
 
-            // 否则（背景层）阻止滚动
-            if (e.target.closest('.fixed')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-    }
+    //         // 否则（背景层）阻止滚动
+    //         if (e.target.closest('.fixed')) {
+    //             e.preventDefault();
+    //         }
+    //     }, { passive: false });
+    // }
 
     // 页面加载完成后的初始化动画
     setTimeout(() => {
