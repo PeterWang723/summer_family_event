@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPDB Summer Family Event in Greenwich Park - Game Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#06b6d4',
+                        'secondary': '#f97316',
+                        'accent': '#eab308',
+                        'success': '#10b981'
+                    },
+                    fontFamily: {
+                        'chinese': ['PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(249, 115, 22, 0.8)), url('./images/greenwich-park-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .station-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-orange-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl md:text-2xl font-bold text-primary">🎉 Greenwich Park 团建</h1>
+                <div class="flex space-x-2 md:space-x-4">
+                    <a href="#welcome" class="text-sm md:text-base text-gray-600 hover:text-primary transition-colors">首页</a>
+                    <a href="#stations" class="text-sm md:text-base text-gray-600 hover:text-primary transition-colors">游戏站点</a>
+                    <a href="#contact" class="text-sm md:text-base text-gray-600 hover:text-primary transition-colors">联系我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主横幅区域 -->
+    <section id="welcome" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="bounce-in">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                    Greenwich Park
+                    <span class="block text-accent">团建狂欢节</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
+                    在美丽的格林威治公园，与团队一起享受精彩的游戏时光！三个趣味游戏站点等你来挑战，准备好展现你的团队精神了吗？
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#stations" class="bg-accent hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        🎮 查看游戏站点
+                    </a>
+                    <a href="#tips" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        💡 活动须知
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏站点介绍 -->
+    <section id="stations" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-6">🎯 三大游戏站点</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    每个站点都有独特的挑战，测试团队的不同技能。准备好展现你们的默契和创意了吗？
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Station 1: 你画我猜 -->
+                <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-primary to-cyan-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
+                            🎨
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 1</h3>
+                        <h4 class="text-xl md:text-2xl font-semibold text-primary">你画我猜</h4>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <img src="./images/charades-game.png" alt="你画我猜游戏" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
+                        <p class="text-gray-600 mb-4">
+                            经典的画图猜词游戏！一人画图，队友猜词，考验团队默契和创意表达能力。在限定时间内猜对越多词汇，得分越高！
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-primary/10 to-cyan-100 rounded-2xl p-6">
+                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">▶</span>
+                                <span><strong>团队配置：</strong>每队4-6人，轮流担任画手</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">▶</span>
+                                <span><strong>时间限制：</strong>每轮3分钟，共进行3轮</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">▶</span>
+                                <span><strong>画图规则：</strong>只能画图，不能写字、说话或做手势</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">▶</span>
+                                <span><strong>词汇范围：</strong>日常物品、动物、职业、动作等</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">▶</span>
+                                <span><strong>计分方式：</strong>猜对1个词得10分，每队最高分30分</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">🏆</span>
+                                <span><strong>获胜条件：</strong>总分最高的队伍获胜</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 2: 木头人 -->
+                <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.4s;">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-secondary to-red-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
+                            🕺
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 2</h3>
+                        <h4 class="text-xl md:text-2xl font-semibold text-secondary">木头人</h4>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <img src="./images/freeze-game.jpg" alt="木头人游戏" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
+                        <p class="text-gray-600 mb-4">
+                            经典的反应力游戏！音乐响起时尽情舞动，音乐停止瞬间必须立刻静止不动。考验参与者的反应速度和自控能力！
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-secondary/10 to-orange-100 rounded-2xl p-6">
+                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">▶</span>
+                                <span><strong>参与人数：</strong>每轮8-12人同时参与</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">▶</span>
+                                <span><strong>游戏流程：</strong>音乐播放时自由舞动，停止时立刻静止</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">▶</span>
+                                <span><strong>淘汰规则：</strong>音乐停止后还在动的参与者出局</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">▶</span>
+                                <span><strong>观察时间：</strong>音乐停止后观察3秒钟</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">▶</span>
+                                <span><strong>胜利条件：</strong>坚持到最后的3人获胜</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">🏆</span>
+                                <span><strong>奖励机制：</strong>获胜者获得团队积分加成</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 3: 蒙眼踢球 -->
+                <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.6s;">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-accent to-yellow-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
+                            ⚽
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 3</h3>
+                        <h4 class="text-xl md:text-2xl font-semibold text-accent">蒙眼踢球</h4>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <img src="./images/blind-soccer.jpg" alt="蒙眼踢球游戏" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
+                        <p class="text-gray-600 mb-4">
+                            挑战你的空间感知！蒙住双眼，在队友的语言指导下踢球进门。考验团队沟通协作和信任度的终极挑战！
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-accent/10 to-yellow-100 rounded-2xl p-6">
+                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>队伍配置：</strong>2人一组，1人踢球1人指导</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>装备要求：</strong>眼罩、软质足球、便携球门</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>距离设置：</strong>起点距离球门5米</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>指导规则：</strong>指导员只能用语言，不能触碰踢球者</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>机会次数：</strong>每组有3次踢球机会</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">▶</span>
+                                <span><strong>计分标准：</strong>进球得20分，击中门框得10分</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent mr-2">🏆</span>
+                                <span><strong>角色互换：</strong>完成后两人角色互换再进行</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活动须知 -->
+    <section id="tips" class="py-16 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">💡 活动须知</h2>
+                <p class="text-lg text-gray-600">让我们确保每个人都能安全、愉快地参与团建活动</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+                    <div class="text-4xl mb-4">👕</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">着装要求</h3>
+                    <p class="text-gray-600">建议穿着舒适的运动装和防滑运动鞋，避免穿着高跟鞋或拖鞋参与活动。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-4xl mb-4">🕐</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">时间安排</h3>
+                    <p class="text-gray-600">活动时间为下午2:00-5:00，请提前15分钟到达集合地点进行签到。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.3s;">
+                    <div class="text-4xl mb-4">🌤️</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">天气备案</h3>
+                    <p class="text-gray-600">如遇恶劣天气，活动将延期或转移至室内场地，会提前通知大家。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.4s;">
+                    <div class="text-4xl mb-4">🏥</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">安全保障</h3>
+                    <p class="text-gray-600">现场配备急救包，工作人员将全程关注参与者安全，如有不适请及时报告。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.5s;">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">联系方式</h3>
+                    <p class="text-gray-600">活动期间请保持手机畅通，遇到问题可随时联系现场工作人员。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.6s;">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">奖励机制</h3>
+                    <p class="text-gray-600">每个站点都有精美奖品，最终获胜团队将获得特别大奖！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系信息 -->
+    <section id="contact" class="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">📞 联系我们</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="text-3xl mb-4">📍</div>
+                        <h3 class="font-bold text-lg mb-2">活动地点</h3>
+                        <p>Greenwich Park<br>London SE10 8QY</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="text-3xl mb-4">📞</div>
+                        <h3 class="font-bold text-lg mb-2">联系电话</h3>
+                        <p>活动协调员<br>+44 20 8858 2608</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="text-3xl mb-4">✉️</div>
+                        <h3 class="font-bold text-lg mb-2">电子邮箱</h3>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f4b5a5e525d4a56535b5651587f5c50524f5e5146115c5052">[email&#160;protected]</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部版权 -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Greenwich Park 团建活动. Created by MiniMax Agent</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript交互功能 -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./js/main.js"></script>
+</body>
+</html>
