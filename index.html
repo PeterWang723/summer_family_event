@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPDB Summer Family Event in Greenwich Park - Game Guide</title>
+    <title>Greenwich Park 团建活动 - 游戏站点指南</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,6 +64,122 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        .game-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .game-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .game-image {
+            transition: all 0.3s ease;
+        }
+        .game-card:hover .game-image {
+            transform: scale(1.05);
+        }
+        .station-header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(5px);
+        }
+        
+        /* 详情页面样式 */
+        #game-details-overlay {
+            will-change: transform;
+        }
+        
+        #game-details-overlay.translate-x-0 {
+            transform: translateX(0);
+        }
+        
+        #game-details-overlay.translate-x-full {
+            transform: translateX(100%);
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            #game-details-overlay {
+                transition-duration: 400ms;
+            }
+            
+            #game-details-overlay .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            #close-details {
+                width: 2.5rem;
+                height: 2.5rem;
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            #back-to-main {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                min-height: 44px;
+            }
+            
+            .game-card {
+                min-height: 44px;
+            }
+            
+            .game-card img {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+        
+        /* 规则列表样式 */
+        .rule-item {
+            transition: all 0.2s ease;
+        }
+        
+        .rule-item:hover {
+            background-color: #f8fafc;
+            transform: translateX(2px);
+        }
+        
+        /* 安全提醒样式 */
+        .safety-item {
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* 滚动优化 */
+        #game-details-overlay {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* 动画增强 */
+        .slide-in {
+            animation: slideInFromRight 0.5s ease-out;
+        }
+        
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* 按钮触摸优化 */
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        /* 可访问性增强 */
+        .focus\:ring-2:focus {
+            ring-width: 2px;
+        }
+        
+        .focus\:ring-blue-500:focus {
+            ring-color: #3b82f6;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-cyan-50 to-orange-50 min-h-screen">
@@ -114,155 +230,175 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Station 1: 你画我猜 -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                <!-- Station 1: 创意表达站 -->
                 <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.2s;">
-                    <div class="text-center mb-6">
+                    <div class="text-center mb-8">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-primary to-cyan-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
                             🎨
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 1</h3>
-                        <h4 class="text-xl md:text-2xl font-semibold text-primary">你画我猜</h4>
+                        <h4 class="text-xl md:text-2xl font-semibold text-primary">创意表达站</h4>
+                        <p class="text-gray-600 mt-3">发挥创意，展现表达能力的游戏挑战</p>
                     </div>
                     
-                    <div class="bg-white rounded-2xl p-6 mb-6">
-                        <img src="./images/charades-game.png" alt="你画我猜游戏" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
-                        <p class="text-gray-600 mb-4">
-                            经典的画图猜词游戏！一人画图，队友猜词，考验团队默契和创意表达能力。在限定时间内猜对越多词汇，得分越高！
-                        </p>
+                    <!-- 游戏1: 你画我猜 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/charades-game.png" alt="你画我猜游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🎨 你画我猜</h5>
+                                <p class="text-sm text-gray-600">画图猜词，默契挑战</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">一人画图，队友猜词。考验团队默契和创意表达能力，限时猜对词汇得分。</p>
+                        <div class="bg-primary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 4-6人/队，每轮3分钟，画手不能说话写字，猜对1词得10分</p>
+                        </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-primary/10 to-cyan-100 rounded-2xl p-6">
-                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <span class="text-primary mr-2">▶</span>
-                                <span><strong>团队配置：</strong>每队4-6人，轮流担任画手</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-primary mr-2">▶</span>
-                                <span><strong>时间限制：</strong>每轮3分钟，共进行3轮</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-primary mr-2">▶</span>
-                                <span><strong>画图规则：</strong>只能画图，不能写字、说话或做手势</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-primary mr-2">▶</span>
-                                <span><strong>词汇范围：</strong>日常物品、动物、职业、动作等</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-primary mr-2">▶</span>
-                                <span><strong>计分方式：</strong>猜对1个词得10分，每队最高分30分</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">🏆</span>
-                                <span><strong>获胜条件：</strong>总分最高的队伍获胜</span>
-                            </li>
-                        </ul>
+                    <!-- 游戏2: 词汇拼图 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/word-puzzle.jpg" alt="词汇拼图游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🧩 词汇拼图</h5>
+                                <p class="text-sm text-gray-600">团队协作，智慧比拼</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">团队合作拼出完整词汇或句子，考验逻辑思维和沟通协调能力。</p>
+                        <div class="bg-primary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 5分钟内拼出指定词汇，可讨论但不能看队友的拼图片段</p>
+                        </div>
+                    </div>
+
+                    <!-- 游戏3: 无声表演 -->
+                    <div class="game-card bg-white rounded-2xl p-5 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/mime-game.jpg" alt="无声表演游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🎭 无声表演</h5>
+                                <p class="text-sm text-gray-600">肢体语言，创意演绎</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">用肢体动作表演指定情景或概念，队友猜测表演内容。</p>
+                        <div class="bg-primary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 表演者不能发声，每个情景2分钟，猜对得15分</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Station 2: 木头人 -->
+                <!-- Station 2: 反应挑战站 -->
                 <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.4s;">
-                    <div class="text-center mb-6">
+                    <div class="text-center mb-8">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-secondary to-red-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
-                            🕺
+                            ⚡
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 2</h3>
-                        <h4 class="text-xl md:text-2xl font-semibold text-secondary">木头人</h4>
+                        <h4 class="text-xl md:text-2xl font-semibold text-secondary">反应挑战站</h4>
+                        <p class="text-gray-600 mt-3">快速反应，瞬间决策的刺激挑战</p>
                     </div>
                     
-                    <div class="bg-white rounded-2xl p-6 mb-6">
-                        <img src="./images/freeze-game.jpg" alt="木头人游戏" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
-                        <p class="text-gray-600 mb-4">
-                            经典的反应力游戏！音乐响起时尽情舞动，音乐停止瞬间必须立刻静止不动。考验参与者的反应速度和自控能力！
-                        </p>
+                    <!-- 游戏1: 木头人 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/freeze-game.jpg" alt="木头人游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🕺 木头人</h5>
+                                <p class="text-sm text-gray-600">音乐停止，瞬间静止</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">音乐响起时尽情舞动，音乐停止瞬间必须立刻静止不动。考验反应速度和自控力。</p>
+                        <div class="bg-secondary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 8-12人参与，音乐停止后动作者出局，坚持到最后3人获胜</p>
+                        </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-secondary/10 to-orange-100 rounded-2xl p-6">
-                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <span class="text-secondary mr-2">▶</span>
-                                <span><strong>参与人数：</strong>每轮8-12人同时参与</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-secondary mr-2">▶</span>
-                                <span><strong>游戏流程：</strong>音乐播放时自由舞动，停止时立刻静止</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-secondary mr-2">▶</span>
-                                <span><strong>淘汰规则：</strong>音乐停止后还在动的参与者出局</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-secondary mr-2">▶</span>
-                                <span><strong>观察时间：</strong>音乐停止后观察3秒钟</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-secondary mr-2">▶</span>
-                                <span><strong>胜利条件：</strong>坚持到最后的3人获胜</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">🏆</span>
-                                <span><strong>奖励机制：</strong>获胜者获得团队积分加成</span>
-                            </li>
-                        </ul>
+                    <!-- 游戏2: 红绿灯 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/red-light-game.jpg" alt="红绿灯游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🚦 红绿灯</h5>
+                                <p class="text-sm text-gray-600">听指令，快反应</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">听到"绿灯"向前跑，"红灯"立刻停止。考验听觉反应和身体控制能力。</p>
+                        <div class="bg-secondary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 红灯时移动者后退3步，先到终点线的前3名获胜</p>
+                        </div>
+                    </div>
+
+                    <!-- 游戏3: 音乐椅子 -->
+                    <div class="game-card bg-white rounded-2xl p-5 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/musical-chairs.jpg" alt="音乐椅子游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🪑 音乐椅子</h5>
+                                <p class="text-sm text-gray-600">抢座位，拼速度</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">音乐停止时快速抢座位，椅子数量比人数少1个，考验反应速度和策略。</p>
+                        <div class="bg-secondary/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 音乐停止抢座位，没座位者淘汰，逐轮减少椅子数量</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Station 3: 蒙眼踢球 -->
+                <!-- Station 3: 运动协作站 -->
                 <div class="station-card card-hover rounded-3xl p-6 md:p-8 fade-in" style="animation-delay: 0.6s;">
-                    <div class="text-center mb-6">
+                    <div class="text-center mb-8">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 bg-gradient-to-r from-accent to-yellow-400 rounded-full flex items-center justify-center text-white text-3xl md:text-4xl">
-                            ⚽
+                            🏃
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Station 3</h3>
-                        <h4 class="text-xl md:text-2xl font-semibold text-accent">蒙眼踢球</h4>
+                        <h4 class="text-xl md:text-2xl font-semibold text-accent">运动协作站</h4>
+                        <p class="text-gray-600 mt-3">运动技能与团队协作的完美结合</p>
                     </div>
                     
-                    <div class="bg-white rounded-2xl p-6 mb-6">
-                        <img src="./images/blind-soccer.jpg" alt="蒙眼踢球游戏" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h5 class="font-bold text-lg text-gray-800 mb-3">🎪 游戏介绍</h5>
-                        <p class="text-gray-600 mb-4">
-                            挑战你的空间感知！蒙住双眼，在队友的语言指导下踢球进门。考验团队沟通协作和信任度的终极挑战！
-                        </p>
+                    <!-- 游戏1: 蒙眼踢球 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/blind-soccer.jpg" alt="蒙眼踢球游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">⚽ 蒙眼踢球</h5>
+                                <p class="text-sm text-gray-600">信任协作，精准射门</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">蒙住双眼，在队友语言指导下踢球进门。考验团队沟通协作和信任度。</p>
+                        <div class="bg-accent/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 2人一组，距离5米，3次机会，进球20分门框10分</p>
+                        </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-accent/10 to-yellow-100 rounded-2xl p-6">
-                        <h5 class="font-bold text-lg text-gray-800 mb-4">📋 详细规则</h5>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>队伍配置：</strong>2人一组，1人踢球1人指导</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>装备要求：</strong>眼罩、软质足球、便携球门</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>距离设置：</strong>起点距离球门5米</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>指导规则：</strong>指导员只能用语言，不能触碰踢球者</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>机会次数：</strong>每组有3次踢球机会</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">▶</span>
-                                <span><strong>计分标准：</strong>进球得20分，击中门框得10分</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-accent mr-2">🏆</span>
-                                <span><strong>角色互换：</strong>完成后两人角色互换再进行</span>
-                            </li>
-                        </ul>
+                    <!-- 游戏2: 点球大战 -->
+                    <div class="game-card bg-white rounded-2xl p-5 mb-4 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/penalty-game.jpg" alt="点球大战游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🥅 点球大战</h5>
+                                <p class="text-sm text-gray-600">技巧挑战，精准对决</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">传统足球点球比赛，考验个人技巧和心理素质，为团队争取最高分。</p>
+                        <div class="bg-accent/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 每人5次射门机会，进球得分，守门员可以是队友</p>
+                        </div>
+                    </div>
+
+                    <!-- 游戏3: 信任挑战 -->
+                    <div class="game-card bg-white rounded-2xl p-5 shadow-md">
+                        <div class="flex items-center mb-3">
+                            <img src="./images/trust-game.png" alt="信任挑战游戏" class="game-image w-16 h-16 object-cover rounded-lg mr-4">
+                            <div>
+                                <h5 class="font-bold text-lg text-gray-800">🤝 信任挑战</h5>
+                                <p class="text-sm text-gray-600">相互信任，团队配合</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3">信任倒、盲人引路等信任建立活动，增强团队凝聚力和相互信任。</p>
+                        <div class="bg-accent/10 rounded-lg p-3">
+                            <p class="text-xs text-gray-600"><strong>规则:</strong> 轮流体验各种信任活动，成功完成得到团队信任分</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -336,7 +472,7 @@
                     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
                         <div class="text-3xl mb-4">✉️</div>
                         <h3 class="font-bold text-lg mb-2">电子邮箱</h3>
-                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f4b5a5e525d4a56535b5651587f5c50524f5e5146115c5052">[email&#160;protected]</a></p>
+                        <p>teambuilding@company.com</p>
                     </div>
                 </div>
             </div>
@@ -350,7 +486,65 @@
         </div>
     </footer>
 
+    <!-- 全屏游戏规则详情页面 -->
+    <div id="game-details-overlay" class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
+        <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+            <!-- 规则页面头部 -->
+            <header class="sticky top-0 bg-white/95 backdrop-blur-md shadow-sm z-10">
+                <div class="container mx-auto px-4 py-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <button id="close-details" class="w-11 h-11 md:w-12 md:h-12 rounded-full bg-gray-100 hover:bg-gray-200 active:bg-gray-300 flex items-center justify-center transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:outline-none" style="min-width: 44px; min-height: 44px;" aria-label="返回游戏列表">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <div>
+                                <h1 id="game-title" class="text-xl md:text-2xl font-bold text-gray-800">游戏详情</h1>
+                                <p id="game-station" class="text-sm text-gray-600">Station 信息</p>
+                            </div>
+                        </div>
+                        <div id="game-icon" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white text-xl">
+                            🎮
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 规则页面内容 -->
+            <main class="container mx-auto px-4 py-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 游戏概览卡片 -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                        <div class="flex flex-col md:flex-row items-start gap-6">
+                            <img id="game-detail-image" src="" alt="游戏图片" class="w-full md:w-48 h-48 object-cover rounded-xl">
+                            <div class="flex-1">
+                                <h2 id="game-detail-name" class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">游戏名称</h2>
+                                <p id="game-detail-subtitle" class="text-lg text-gray-600 mb-4">游戏副标题</p>
+                                <div id="game-detail-overview" class="text-gray-700">
+                                    <!-- 游戏概览内容将通过JavaScript填充 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 详细规则内容 -->
+                    <div id="game-detail-content" class="space-y-6">
+                        <!-- 详细规则内容将通过JavaScript动态填充 -->
+                    </div>
+
+                    <!-- 返回按钮 -->
+                    <div class="text-center mt-8 pb-8">
+                        <button id="back-to-main" class="bg-primary hover:bg-primary/90 active:bg-primary/80 text-white font-bold py-4 px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" style="min-height: 44px;">
+                            🎯 返回游戏选择
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
     <!-- JavaScript交互功能 -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
