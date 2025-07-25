@@ -610,11 +610,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // 为触摸设备添加特殊处理
         document.body.classList.add('touch-device');
         
-        // 防止iOS Safari的弹性滚动
         document.addEventListener('touchmove', function(e) {
-            if (e.target.closest('.fixed')) {
-                e.preventDefault();
+            const overlay = document.querySelector('#game-details-overlay');
+
+            // 如果 overlay 是开启状态，并且用户正在触摸 overlay 内部 => 允许滚动
+            if (overlay && overlay.contains(e.target)) {
+                return; // ✅ 不阻止滚动
             }
+
+            // 否则（背景层）阻止滚动
+            e.preventDefault();
         }, { passive: false });
     }
 
