@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
         populateGameDetails(gameData);
         
         // 显示覆盖层
-        document.body.style.overflow = 'hidden'; // 防止背景滚动
+        //document.body.style.overflow = 'hidden'; // 防止背景滚动
         detailsOverlay.classList.remove('translate-x-full');
         detailsOverlay.classList.add('translate-x-0');
         
@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideGameDetailsPage() {
         detailsOverlay.classList.remove('translate-x-0');
         detailsOverlay.classList.add('translate-x-full');
-        document.body.style.overflow = ''; // 恢复滚动
+        //ocument.body.style.overflow = ''; // 恢复滚动
         
         // 恢复原来的滚动位置
         setTimeout(() => {
