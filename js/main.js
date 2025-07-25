@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 显示游戏详情页面
     function showGameDetailsPage(gameCard) {
         // 保存当前滚动位置
-        // currentScrollPosition = window.pageYOffset;
+        currentScrollPosition = window.pageYOffset;
         
         // 获取游戏信息
         const gameName = gameCard.querySelector('h5').textContent.replace(/^[^\s]+ /, ''); // 移除emoji

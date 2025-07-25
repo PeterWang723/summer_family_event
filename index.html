@@ -146,10 +146,10 @@
         }
         
         /* 滚动优化 */
-        #game-details-overlay {
+        /* #game-details-overlay {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-        }
+        } */
         
         /* 动画增强 */
         .slide-in {
@@ -487,8 +487,8 @@
     </footer>
 
     <!-- 全屏游戏规则详情页面 -->
-    <div id="game-details-overlay" class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
-        <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div id="game-details-overlay" class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-500 ease-in-out">
+        <div class="h-full overflow-y-auto -webkit-overflow-scrolling: touch;">
             <!-- 规则页面头部 -->
             <header class="sticky top-0 bg-white/95 backdrop-blur-md shadow-sm z-10">
                 <div class="container mx-auto px-4 py-4">
